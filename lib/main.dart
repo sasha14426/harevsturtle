@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ht/race_animation.dart';
+import 'race_animation.dart';
 
 import 'animal_info.dart';
 import 'contest.dart';
