@@ -1,7 +1,8 @@
-import 'dart:io';
+import 'dart:convert';
 
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'race_animation.dart';
 
@@ -31,10 +32,15 @@ class _MyAppState extends ConsumerState<MyApp> {
   Contest? contest;
   bool _gameIsShowing = false;
 
-  void _newContest() {
-    final file =
-        File('contestants_input.json'); // Make sure this path is correct
-    contest = Contest.fromFile(file);
+  void _newContest() async {
+    // final file =
+    //     File('lib/contestants_input.json'); // Make sure this path is correct
+    // contest = Contest.fromFile(file);
+
+    final jsonData = await rootBundle.loadString(
+        'assets/data/contestants_input.json'); // TODO Ensure that the await doesn't cause issues
+
+    contest = Contest.fromJson(jsonDecode(jsonData));
 
     _game = ContestAnimation(contest!, _onGameEnd);
 
@@ -121,7 +127,8 @@ class _MyAppState extends ConsumerState<MyApp> {
                                 itemBuilder: (context, index) {
                                   final List<AnimalInfo> infos =
                                       List.from(contest!.contestantsInfo);
-                                  infos.sort((a, b) => a.name.compareTo(b.name));
+                                  infos
+                                      .sort((a, b) => a.name.compareTo(b.name));
                                   final ctnt = infos[index];
                                   return Card(
                                     margin: const EdgeInsets.all(5),
