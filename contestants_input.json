@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Adrian",
+        "species": "tortoise",
+        "endurance": 231,
+        "minSpeed": 1,
+        "maxSpeed": 10
+    },
+    {
+        "name": "Basha",
+        "species": "rabbit",
+        "endurance": 32,
+        "minSpeed": 5,
+        "maxSpeed": 15
+    },
+    {
+        "name": "Ceorge",
+        "species": "cheetah",
+        "endurance": 14,
+        "minSpeed": 20,
+        "maxSpeed": 30
+    },
+    {
+        "name": "Dolly",
+        "species": "sloth",
+        "endurance": 231,
+        "minSpeed": 4,
+        "maxSpeed": 7
+    }
+]
