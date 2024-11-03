@@ -41,7 +41,7 @@ class ContestAnimation extends FlameGame with RiverpodGameMixin {
         }
 
         await Future.delayed(
-            Duration(milliseconds: (1000 / frameRate).toInt()));
+            Duration(milliseconds: 1000 ~/ frameRate));
       }
 
       // ref.read(pauseProvider.notifier).setState(true);
