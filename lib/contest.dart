@@ -22,6 +22,8 @@ class Contest {
     return Contest._(infos);
   }
 
+  factory Contest.fromJson(List json) => Contest._(json.map((json) => AnimalInfo.fromJson(json)).toList());
+
   void run() {
     for (var i = 0; i < numberOfRaces; i++) {
       final race = Race(contestantsInfo: contestantsInfo, trackLength: trackLength);

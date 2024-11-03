@@ -1,8 +1,8 @@
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
-import 'package:ht/animal_info.dart';
-import 'package:ht/contest.dart';
+import 'animal_info.dart';
+import 'contest.dart';
 
 import 'pause_provider.dart';
 
