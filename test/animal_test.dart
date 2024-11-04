@@ -25,13 +25,23 @@ void main() {
     animal = Animal(animalInfo, random);
   });
 
-  test('Animal move', () {
-    when(() => random.nextDouble()).thenReturn(1.0);
-    when(() => random.nextInt(any())).thenReturn(0);
-    final prevDistance = animal.distance.toInt();
+  group('Animal move', () {
+    test('Animal moves', () {
+      when(() => random.nextDouble()).thenReturn(1.0);
+      when(() => random.nextInt(any())).thenReturn(0);
+      final prevDistance = animal.distance.toInt();
 
-    animal.move();
-    
-    expect(animal.distance, equals(prevDistance + animal.info.minSpeed));
+      animal.move();
+
+      expect(animal.distance, equals(prevDistance + animal.info.minSpeed));
+    });
+    test('Animal doesnt move', () {
+      when(() => random.nextDouble()).thenReturn(0.0);
+      final prevDistance = animal.distance.toInt();
+
+      animal.move();
+
+      expect(animal.distance, equals(prevDistance));
+    });
   });
 }
