@@ -44,8 +44,8 @@ class ContestAnimation extends FlameGame with RiverpodGameMixin {
             Duration(milliseconds: 1000 ~/ frameRate));
       }
 
-      // ref.read(pauseProvider.notifier).setState(true);
-      // paused = true;
+      ref.read(pauseProvider.notifier).setState(true);
+      paused = true;
       await _pauseCheck();
       removeAll(raceContestantComponents);
     }

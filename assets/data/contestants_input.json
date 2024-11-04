@@ -1,28 +1,28 @@
 [
     {
-        "name": "Adrian",
-        "species": "tortoise",
+        "name": "Tony",
+        "species": "Turtle",
         "endurance": 231,
         "minSpeed": 1,
         "maxSpeed": 10
     },
     {
-        "name": "Basha",
-        "species": "rabbit",
+        "name": "Fredo",
+        "species": "Hare",
         "endurance": 32,
         "minSpeed": 5,
         "maxSpeed": 15
     },
     {
-        "name": "Ceorge",
-        "species": "cheetah",
+        "name": "Ali",
+        "species": "Rat",
         "endurance": 14,
         "minSpeed": 20,
         "maxSpeed": 30
     },
     {
-        "name": "Dolly",
-        "species": "sloth",
+        "name": "Anatoly",
+        "species": "Pelican",
         "endurance": 231,
         "minSpeed": 4,
         "maxSpeed": 7
