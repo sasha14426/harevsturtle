@@ -30,7 +30,7 @@ class _MyAppState extends ConsumerState<MyApp> {
   Contest? contest;
   bool _gameIsShowing = false;
 
-  void _newContest() async {
+  void newContest() async {
     // final file =
     //     File('lib/contestants_input.json'); // Make sure this path is correct
     // contest = Contest.fromFile(file);
@@ -40,20 +40,20 @@ class _MyAppState extends ConsumerState<MyApp> {
 
     contest = Contest.fromJson(jsonDecode(jsonData));
 
-    _game = ContestAnimation(contest!, _onGameEnd);
+    _game = ContestAnimation(contest!, onGameEnd);
 
     setState(() {
       _gameIsShowing = true;
     });
   }
 
-  void _onGameEnd() {
+  void onGameEnd() {
     setState(() {
       _gameIsShowing = false;
     });
   }
 
-  void _showGame() {
+  void showGame() {
     if (_game != null) {
       setState(() {
         _gameIsShowing = true;
@@ -98,12 +98,12 @@ class _MyAppState extends ConsumerState<MyApp> {
                       children: [
                         if (contest != null)
                           TextButton(
-                            onPressed: _showGame,
+                            onPressed: showGame,
                             child: const Text('Replay last contest'),
                           ),
                         TextButton(
                           onPressed: () => setState(() {
-                            _newContest();
+                            newContest();
                           }),
                           child: const Text('New contest'),
                         ),
