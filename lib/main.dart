@@ -4,6 +4,7 @@ import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hare_vs_turtle/leaderboard.dart';
 import 'race_animation.dart';
 
 import 'animal_info.dart';
@@ -99,49 +100,14 @@ class _MyAppState extends ConsumerState<MyApp> {
                         child: Row(
                           children: [
                             Expanded(
-                              child: ListView.builder(
-                                itemCount: contest!.contestantsInfo.length,
-                                itemBuilder: (context, index) {
-                                  final List<AnimalInfo> infos =
-                                      List.from(contest!.contestantsInfo);
-                                  infos.sort((a, b) => contest!.scores[b]!
-                                      .compareTo(contest!.scores[a]!));
-                                  final ctnt = infos[index];
-
-                                  return Card(
-                                    margin: const EdgeInsets.all(5),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Text(
-                                        "$ctnt's score is ${contest!.scores[ctnt]}",
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                  );
-                                },
+                              child: Leaderboard(
+                                contest: contest,
+                                sorter: (a, b) => contest!.scores[b]!
+                                    .compareTo(contest!.scores[a]!),
                               ),
                             ),
                             Expanded(
-                              child: ListView.builder(
-                                itemCount: contest!.contestantsInfo.length,
-                                itemBuilder: (context, index) {
-                                  final List<AnimalInfo> infos =
-                                      List.from(contest!.contestantsInfo);
-                                  infos
-                                      .sort((a, b) => a.name.compareTo(b.name));
-                                  final ctnt = infos[index];
-                                  return Card(
-                                    margin: const EdgeInsets.all(5),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Text(
-                                        "$ctnt's score is ${contest!.scores[ctnt]}",
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
+                              child: Leaderboard(contest: contest, sorter: (a, b) => a.name.compareTo(b.name)),
                             ),
                           ],
                         ),
