@@ -1,16 +1,14 @@
 import 'dart:convert';
 
-import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hare_vs_turtle/game_screen.dart';
 import 'package:hare_vs_turtle/leaderboard.dart';
 import 'race_animation.dart';
 
 import 'contest.dart';
 import 'package:flame/game.dart';
-
-import 'pause_provider.dart';
 
 void main() {
   runApp(const ProviderScope(
@@ -65,28 +63,12 @@ class _MyAppState extends ConsumerState<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final isPaused = ref.watch(pauseProvider);
     return Scaffold(
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(100.0),
           child: _gameIsShowing
-              ? Column(
-                  children: [
-                    Expanded(
-                        child: RiverpodAwareGameWidget(
-                      key: GlobalKey<RiverpodAwareGameWidgetState>(),
-                      game: _game!,
-                    )),
-                    IconButton(
-                      onPressed: () =>
-                          ref.read(pauseProvider.notifier).toggle(),
-                      icon: isPaused
-                          ? const Icon(Icons.play_arrow)
-                          : const Icon(Icons.pause),
-                    ),
-                  ],
-                )
+              ? GameScreen(game: _game)
               : Column(
                   children: [
                     if (contest != null)
