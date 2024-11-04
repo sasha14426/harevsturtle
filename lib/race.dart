@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'animal.dart';
 import 'animal_info.dart';
 
@@ -8,7 +10,7 @@ class Race {
 
   Race({required this.trackLength, required List<AnimalInfo> contestantsInfo})
       : contestants =
-            contestantsInfo.map((AnimalInfo info) => Animal(info)).toList();
+            contestantsInfo.map((AnimalInfo info) => Animal(info, Random())).toList();
 
   List<Animal>? checkWinners() {
     final winners =

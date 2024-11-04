@@ -6,9 +6,9 @@ class Animal {
   final AnimalInfo info;
   int distance = 0;
 
-  final Random random = Random();
+  final Random random;
 
-  Animal(this.info);
+  Animal(this.info, this.random);
 
   void move() {
     final step = random.nextInt(info.maxSpeed - info.minSpeed) + info.minSpeed;
