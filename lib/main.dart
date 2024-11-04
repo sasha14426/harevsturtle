@@ -7,7 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hare_vs_turtle/leaderboard.dart';
 import 'race_animation.dart';
 
-import 'animal_info.dart';
 import 'contest.dart';
 import 'package:flame/game.dart';
 
