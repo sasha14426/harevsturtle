@@ -31,12 +31,8 @@ class _MyAppState extends ConsumerState<MyApp> {
   bool _gameIsShowing = false;
 
   void newContest() async {
-    // final file =
-    //     File('lib/contestants_input.json'); // Make sure this path is correct
-    // contest = Contest.fromFile(file);
-
     final jsonData = await rootBundle.loadString(
-        'assets/data/contestants_input.json'); // TODO Ensure that the await doesn't cause issues
+        'assets/data/contestants_input.json');
 
     contest = Contest.fromJson(jsonDecode(jsonData));
 

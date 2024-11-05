@@ -23,11 +23,11 @@ class ContestAnimation extends FlameGame with RiverpodGameMixin {
       final raceContestantComponents = <SpriteComponent>[];
 
       for (var j = 0; j < contest.contestantsInfo.length; j++) {
-        final ctnt = contest.contestantsInfo[j];
+        // final ctnt = contest.contestantsInfo[j];
         // final ctntData = raceData.map((frameData) => frameData[ctnt]!).toList();
 
         raceContestantComponents.add(await _createContestant(
-            Vector2(0, j * (size.y / contest.contestantsInfo.length)), ctnt.name));
+            Vector2(0, j * (size.y / contest.contestantsInfo.length))));
       }
 
       for (var j = 0; j < raceData.length; j++) {
@@ -44,8 +44,8 @@ class ContestAnimation extends FlameGame with RiverpodGameMixin {
             Duration(milliseconds: 1000 ~/ frameRate));
       }
 
-      ref.read(pauseProvider.notifier).setState(true);
-      paused = true;
+      // ref.read(pauseProvider.notifier).setState(true);
+      // paused = true;
       await _pauseCheck();
       removeAll(raceContestantComponents);
     }
@@ -59,25 +59,16 @@ class ContestAnimation extends FlameGame with RiverpodGameMixin {
     }
   }
 
-  Future<SpriteComponent> _createContestant(Vector2 startPosition, String contestantName) async {
-    final sprite = await loadSprite('arrow.png');
+  Future<SpriteComponent> _createContestant(Vector2 startPosition) async {
+    final sprite = await loadSprite('adrian.jpg');
     final dimention = size.y / contest.contestantsInfo.length;
-
-    final label = TextComponent(position: Vector2(0, dimention/2), text: contestantName, anchor: Anchor.centerRight);
-
-    startPosition.add(Vector2(0, dimention/2));
 
     final spriteComponent = SpriteComponent()
       ..sprite = sprite
       ..position = startPosition
-      ..size = Vector2.all(dimention)
-      ..anchor = Anchor.centerLeft;
-
+      ..size = Vector2.all(dimention);
 
     add(spriteComponent);
-
-    spriteComponent.add(label);
-
     return spriteComponent;
   }
 
