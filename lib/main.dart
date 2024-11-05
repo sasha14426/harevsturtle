@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hare_vs_turtle/game_screen.dart';
-import 'package:hare_vs_turtle/leaderboard.dart';
+import 'package:hare_vs_turtle/leaderboard_screen.dart';
 import 'race_animation.dart';
 
 import 'contest.dart';
@@ -70,50 +70,10 @@ class _MyAppState extends ConsumerState<MyApp> {
           padding: const EdgeInsets.all(100.0),
           child: _gameIsShowing
               ? GameScreen(game: _game)
-              : Column(
-                  children: [
-                    if (contest != null)
-                      const Text(
-                        "Last contest's Scores:",
-                        style: TextStyle(fontSize: 25),
-                      ),
-                    if (contest != null)
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Leaderboard(
-                                contest: contest,
-                                sorter: (a, b) => contest!.scores[b]!
-                                    .compareTo(contest!.scores[a]!),
-                              ),
-                            ),
-                            Expanded(
-                              child: Leaderboard(
-                                contest: contest,
-                                sorter: (a, b) => a.name.compareTo(b.name),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        if (contest != null)
-                          TextButton(
-                            onPressed: showGame,
-                            child: const Text('Replay last contest'),
-                          ),
-                        TextButton(
-                          onPressed: () => setState(() {
-                            newContest();
-                          }),
-                          child: const Text('New contest'),
-                        ),
-                      ],
-                    ),
-                  ],
+              : LeaderboardScreen(
+                  contest: contest,
+                  showGame: showGame,
+                  newContest: newContest,
                 ),
         ),
       ),
