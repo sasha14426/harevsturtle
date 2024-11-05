@@ -6,7 +6,7 @@ import 'race.dart';
 
 class Contest {
   final List<AnimalInfo> contestantsInfo;
-  static const int numberOfRaces = 10;
+  static const int numberOfRaces = 2;
   final Map<AnimalInfo, int> scores;
   final List<List<Map<AnimalInfo, int>>> raceDatas = [];
   final trackLength = 1000;

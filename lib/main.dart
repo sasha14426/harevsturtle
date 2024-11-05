@@ -57,6 +57,7 @@ class _MyAppState extends ConsumerState<MyApp> {
     if (_game != null) {
       setState(() {
         _gameIsShowing = true;
+        _game?.onLoad();
       });
     }
   }
@@ -88,7 +89,10 @@ class _MyAppState extends ConsumerState<MyApp> {
                               ),
                             ),
                             Expanded(
-                              child: Leaderboard(contest: contest, sorter: (a, b) => a.name.compareTo(b.name)),
+                              child: Leaderboard(
+                                contest: contest,
+                                sorter: (a, b) => a.name.compareTo(b.name),
+                              ),
                             ),
                           ],
                         ),
